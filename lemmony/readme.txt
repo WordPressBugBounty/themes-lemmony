@@ -1,9 +1,9 @@
 === Lemmony ===
 Contributors: shufflehound
 Requires at least: 6.1
-Tested up to: 6.5
+Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 1.6
+Stable tag: 1.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,13 @@ This theme is perfect for those who want a fast and modern website without sacri
 5. Enjoy!
 
 == Changelog ==
+
+= 1.7.1 - February 9, 2026
+* Fixed - Minor issues after the previous update
+
+= 1.7 - February 9, 2026
+* Added - Compatibility with the WordPress 6.9 version
+* Fixed - Added request validation for the companion installer and related admin actions
 
 = 1.6 - April 3, 2024
 * Added - Compatibility with the WordPress 6.5 version

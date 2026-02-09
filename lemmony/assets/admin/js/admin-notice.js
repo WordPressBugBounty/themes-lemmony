@@ -1,4 +1,5 @@
 jQuery( document ).ready(function( $ ) {
+    var lemmonyNonce = ( window.lemmonyAdmin && window.lemmonyAdmin.nonce ) ? window.lemmonyAdmin.nonce : '';
 
     /* Install Lemmony companion */
     var installing = 0;
@@ -18,6 +19,7 @@ jQuery( document ).ready(function( $ ) {
                 url: ajaxurl,
                 data : {
                     action : 'lemmony_companion_install',
+                    nonce : lemmonyNonce,
                 },
                 success: function( response ) {
                     button.removeClass( 'updating-message' );
@@ -61,6 +63,7 @@ jQuery( document ).ready(function( $ ) {
                 url: ajaxurl,
                 data : {
                     action : 'lemmony_import',
+                    nonce : lemmonyNonce,
                 },
                 success: function( response ) {
                     button.removeClass( 'updating-message' );
@@ -93,6 +96,7 @@ jQuery( document ).ready(function( $ ) {
                 url: ajaxurl,
                 data : {
                     action : 'lemmony_import_reset',
+                    nonce : lemmonyNonce,
                 },
                 success: function( response ) {
                     button.removeClass( 'updating-message' );
@@ -113,7 +117,8 @@ jQuery( document ).ready(function( $ ) {
         jQuery.ajax({
             url: ajaxurl,
             data: {
-                action: 'lemmony_companion_notice_dismiss'
+                action: 'lemmony_companion_notice_dismiss',
+                nonce: lemmonyNonce,
             }
         });
     });
@@ -124,7 +129,8 @@ jQuery( document ).ready(function( $ ) {
         jQuery.ajax({
             url: ajaxurl,
             data: {
-                action: 'lemmony_review_notice_dismiss'
+                action: 'lemmony_review_notice_dismiss',
+                nonce: lemmonyNonce,
             },
             success: function( response ) {
                 $('.lemmony-review-dismiss').closest('.lemmony-notice').remove();

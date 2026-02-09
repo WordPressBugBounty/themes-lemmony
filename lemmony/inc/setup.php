@@ -82,7 +82,10 @@ if( !function_exists( 'lemmony_admin_assets' ) ) :
         $plugin = 'lemmony-companion/lemmony-companion.php';
         $page = isset( $_GET['page']  ) ? $_GET['page'] : '';
         if( ( !is_plugin_active( $plugin ) && get_user_meta( get_current_user_id(), 'lemmony-notice-closed', 1 ) != LEMMONY_THEME_VERSION ) || ( $page == 'lemmony' ) ) :
-            wp_enqueue_script( 'lemmony-admin-notice', get_template_directory_uri() . '/assets/admin/js/admin-notice.js', [ 'jquery' ], LEMMONY_THEME_VERSION ); 
+            wp_enqueue_script( 'lemmony-admin-notice', get_template_directory_uri() . '/assets/admin/js/admin-notice.js', [ 'jquery' ], LEMMONY_THEME_VERSION );
+            wp_localize_script( 'lemmony-admin-notice', 'lemmonyAdmin', [
+                'nonce' => wp_create_nonce( 'lemmony_admin_actions' ),
+            ] );
         endif;
     }
     add_action( 'admin_enqueue_scripts', 'lemmony_admin_assets' );

@@ -204,6 +204,8 @@ function lemmony_companion_notice_dismiss() {
         return;
     endif;
 
+    check_ajax_referer( 'lemmony_admin_actions', 'nonce' );
+
 	update_user_meta( get_current_user_id(), 'lemmony-notice-closed', LEMMONY_THEME_VERSION );
 }
 
@@ -216,6 +218,8 @@ function lemmony_review_notice_dismiss() {
     if( !current_user_can( 'activate_plugins' ) ) :
         return;
     endif;
+
+    check_ajax_referer( 'lemmony_admin_actions', 'nonce' );
 
     update_option( 'lemmony_review_notice_closed', 1 );
 }
@@ -230,6 +234,8 @@ function lemmony_companion_install() {
     if( !current_user_can( 'activate_plugins' ) ) :
         return;
     endif;
+
+    check_ajax_referer( 'lemmony_admin_actions', 'nonce' );
 
     $plugin = 'lemmony-companion/lemmony-companion.php';
     if( !is_plugin_active( $plugin ) ) :
@@ -403,6 +409,8 @@ function lemmony_import() {
         return;
     endif;
 
+    check_ajax_referer( 'lemmony_admin_actions', 'nonce' );
+
     // Get content
     $theme = wp_get_theme();
     $theme_name = trim( str_replace( 'lemmony', '', strtolower( $theme->Name ) ) );
@@ -427,6 +435,8 @@ function lemmony_import_reset() {
     if( !current_user_can( 'activate_plugins' ) ) :
         return;
     endif;
+
+    check_ajax_referer( 'lemmony_admin_actions', 'nonce' );
 
     $name = defined( 'LEMMONY_CHILD_THEME_NAME' ) ? 'lemmony_' . strtolower( LEMMONY_CHILD_THEME_NAME ) . '_import' : 'lemmony_import';
 	delete_option( $name );
